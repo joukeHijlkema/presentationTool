@@ -1,0 +1,47 @@
+<html lang="en">
+    <head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=1024" />
+	<title>Title</title>
+	
+	<meta name="description" content="presentation" />
+	<meta name="author" content="jouke" />
+	
+	<link href="CSS/Init.css" rel="stylesheet" />
+	<link href="CSS/Positioning.css" rel="stylesheet" />
+	<link href="CSS/Global.css" rel="stylesheet" />
+	<link href="CSS/Presentation.css" rel="stylesheet" />
+
+	<link rel="stylesheet" href="JS/jqmath-0.4.3.css"/>
+	<script src="JS/jquery-1.4.3.min.js"></script>
+	<script src="JS/jqmath-etc-0.4.5.min.js" charset="utf-8"></script>
+    </head>
+    
+    <body class="impress-not-supported">
+	<div class="fallback-message">
+	    <p>Your browser <b>
+		does not support the features required</b>
+		by impress.js, so you are presented with a simplified version of
+		this presentation.</p>
+	    <p>For the best experience please use the latest <b>
+		Chrome</b>, <b>Safari</b> or <b>Firefox</b> browser.</p>
+	</div>
+	<div id="footer"></div>
+	<div id="slideTitle"></div>
+	<div id="slideSubTitle"></div>
+	<div id="slideNumber"></div>
+	
+	<div id="impress">
+	    
+	</div>
+	
+	<script src="JS/impress.js"></script>
+	<script src="JS/myImpress.js"></script>
+	<script>
+	 if ( !window.location.search.match(/print/) ) {
+	     impress().init();
+	 }
+	</script>
+
+    </body>
+</html>

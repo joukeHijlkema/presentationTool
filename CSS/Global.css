@@ -1,0 +1,110 @@
+.step {
+    position: relative;
+    padding: 5px;
+    margin: 20px auto;
+
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing:    border-box;
+    -ms-box-sizing:     border-box;
+    -o-box-sizing:      border-box;
+    box-sizing:       border-box;
+
+    font-family: Arial, georgia, serif;
+    font-size: 48px;
+    line-height: 1.5;
+}
+
+/*
+    ... and we enhance the styles for impress.js.
+
+    Basically we remove the margin and make inactive steps a little bit transparent.
+*/
+.impress-enabled .step {
+    margin: 0;
+    opacity: 0.0;
+
+    -webkit-transition: opacity 1s;
+    -moz-transition:    opacity 1s;
+    -ms-transition:     opacity 1s;
+    -o-transition:      opacity 1s;
+    transition:         opacity 1s;
+}
+
+.impress-enabled .step.active { opacity: 1 }
+
+/*
+    These 'slide' step styles were heavily inspired by HTML5 Slides:
+    http://html5slides.googlecode.com/svn/trunk/styles.css
+
+    ;)
+
+    They cover everything what you see on first three steps of the demo.
+*/
+
+
+/* .slide { */
+/*     display: block; */
+
+/*     width: 1000px; */
+/*     height: 700px; */
+/*     padding: 40px 60px; */
+
+/*     background-color: white; */
+/*     border: 1px solid rgba(0, 0, 0, .3); */
+/*     border-radius: 10px; */
+/*     box-shadow: 0 2px 6px rgba(0, 0, 0, .1); */
+
+/*     color: rgb(102, 102, 102); */
+/*     text-shadow: 0 2px 2px rgba(0, 0, 0, .1); */
+
+/*     font-family: Arial, sans-serif; */
+/*     font-size: 30px; */
+/*     line-height: 36px; */
+/*     letter-spacing: -1px; */
+/* } */
+
+.test {
+    background-color: red;
+    opacity:1.0;
+}
+
+#overview { display: flex }
+
+video {
+  display: block;
+    width:100%;
+    height:100%;
+  -webkit-transform: translateZ(1px);
+}
+.video-overlay {
+    position: absolute;
+    margin: 0px;
+    text-align:right;
+    -webkit-transform: translateZ(2px);
+}
+
+/*
+    We also make other steps visible and give them a pointer cursor using the
+    `impress-on-` class.
+*/
+.impress-on-overview .step {
+    opacity: 1;
+    cursor: pointer;
+}
+.impress-enabled          { pointer-events: none }
+.impress-enabled #impress { pointer-events: auto }
+
+
+/* /\* ==|== print styles ======================================================= */
+/*    Print styles. */
+/*    Inlined to avoid required HTTP connection: h5bp.com/r */
+/*    ========================================================================== *\/ */
+
+/* /\* .fallback-message { display: none; } *\/ */
+/* /\* @page land {size: landscape;} *\/ */
+/* /\* .step { border: 0; opacity: 1 !important; page-break-inside: avoid; page-break-after: always; position: relative !important; -webkit-transform: none !important;  } *\/ */
+/* /\* .step img { max-height: 100%; } *\/ */
+/* /\* body { height: auto !important; overflow: visible !important; } *\/ */
+/* /\* #impress { position: relative !important; -webkit-transform-origin: none !important; top: 0 !important; left: 0 !important; -webkit-transform: none !important; } *\/ */
+
+

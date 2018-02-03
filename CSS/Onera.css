@@ -1,0 +1,132 @@
+.slide {
+    display: block;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    min-height: 740px;
+    background: radial-gradient( rgb(21,105,189), rgb(117,184,255));
+}
+
+#logo {
+    position: absolute;
+    display: block;
+    bottom:1%;
+    right:1%;
+}
+#footer {
+    position: absolute;
+    display: block;
+    bottom:1%;
+    left:5%;
+}
+#footer .footerTitle {
+    display: inline;
+    font-size: 1.2em;
+    color: #232947;
+}
+#footer .footerDate {
+    display: inline;
+    padding-left: 1em;
+    font-size: 1.1em;
+    color: #23317A;
+}
+
+
+
+.first_slide {
+    background:url(Content/pp_onera.png) center;
+    background-size: 100% 100%;
+}
+
+.title {
+    background:url(Content/pp_title.png) center;
+    background-size: 100% 100%;
+}
+
+.title h1 {
+    position: absolute;
+    top: 30%;
+    width: 100%;
+    margin: auto;
+    text-align: center;
+    color: black;
+    font-size: 1.3em;
+    line-height:1.1em;
+    vertical-align:middle;
+}
+
+.title h2 {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    margin: auto;
+    text-align: center;
+    font-size: 0.8em;
+    vertical-align:middle;
+}
+
+.title h3 {
+    position: absolute;
+    top: 65%;
+    width: 100%;
+    margin: auto;
+    text-align: center;
+    font-size: 0.6em;
+    vertical-align:middle;
+}
+
+#slideTitle {
+    position: absolute;
+    display: block;
+    top:50px;
+    margin-left:auto;
+    margin-right:auto;
+    font-size:2em;
+    width:100%;
+    text-align:center;
+}
+
+
+/* list indentation */
+/* Main Level */
+ul{
+    margin-left:0px;
+    list-style-type:disc;
+}
+
+/* Second Level */
+ul ul{
+    margin-left:1em;
+}
+
+/* Third Level */
+ul ul ul{
+    margin-left:2em;
+}
+
+li {
+    list-style-position: outside;
+    margin-left: 1em;
+}
+
+.textBox {
+    background: #0000FC;
+    color:white;
+    padding:10px;
+    border-radius: 25px;
+    padding-left:30px;
+    padding-right:30px;
+}
+
+.smallText {
+    font-size:50%;
+}
+
+.mediumText {
+    font-size:80%;
+}
+
+.bigText {
+    font-size:150%;
+}

@@ -1,0 +1,47 @@
+.left {
+    position: absolute;
+    left:0px;
+}
+.right {
+    position: absolute;
+    right:0px;
+}
+.bottom {
+    position: absolute;
+    bottom :0px;
+}
+.top {
+    position: absolute;
+    top :0px;
+}
+.hcenter {
+    margin-left:auto;
+    margin-right:auto;
+    text-align:center;
+}
+.vcenter {
+    margin-top:auto;
+    margin-bottom:auto;
+}
+.justCenter {
+    margin-left:auto;
+    margin-right:auto;
+    margin-top:auto;
+    margin-bottom:auto;
+}
+.leftRight {
+    display: flex;                  /\* establish flex container *\/
+    flex-direction: row;            /\* default value; can be omitted *\/
+    flex-wrap: nowrap;              /\* default value; can be omitted *\/
+
+    border: 1px dashed black;
+    justify-content: space-between; /\* switched from default (flex-start, see below) *\/
+    background-color: lightyellow;
+}
+
+.raise {
+    -webkit-transform: translateZ(3px);
+}
+.textLeft {
+    text-align:left;
+}

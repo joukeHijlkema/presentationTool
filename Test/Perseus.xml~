@@ -1,0 +1,368 @@
+<presentation>
+    <parameters
+	root="/home/hylkema/Documents/Perseus/Presentations/Seminaire2017" 
+	slideWidth="1000"
+	slideHeight="700"
+	margin="500"
+	css="CSS/Perseus.css"
+	logos="{'oneraLogo':'CSS/Logos/onera.svg',
+	       'perseusLogo':'CSS/Logos/Perseus.png',
+	       'seraLogo':'CSS/Logos/Sera.png',
+	       'cnesLogo':'CSS/Logos/Cnes.png'}"
+	bg1="CSS/Content/s1.png"
+	bg2="CSS/Content/s2.png"
+	footerTitle="Perseus seminar 2017"
+	footerDate="Massy Palaiseau 26-27 January 2017"
+	convertImages="True"/>
+    
+    <slide type="firstSlide"/>
+    
+    <slide type="titleSlide"
+	   moveX="right"
+	   presTitle="Clustered static firing tests Cogwheel experiments"
+	   author="Jouke Hijlkema"/>
+    
+    <!-- plan -->
+    <slide type="plan" moveX="right" rememberCoords="plan">
+	<figure src="/home/hylkema/Documents/Perseus/Presentations/Images/clusterTest/coupeMoteur.svg"
+		class="top right"
+		style="width:10%"/>
+    </slide>
+    
+    <!-- Experimental setup -->
+    <slide title          = "Experimental setup"
+	   inPlan         = "Clustered firing tests/Experimental setup"
+	   x              = "2630"
+	   y              = "-238"
+	   scale          = "0.02"
+	   class          = "bullet"
+	   rememberCoords = "experimentalSetup"
+	   rotation       ="0.01">
+	
+	<figure class="top right"
+		src="/home/hylkema/Documents/Perseus/Presentations/Images/clusterTest/fagotSetup.JPG" 
+		style="height:100%;width:52%" />
+	<figure class="top left"
+		src="/home/hylkema/Documents/Perseus/Presentations/Images/ignitorTest/ignitorSetup.JPG"
+		style="height:45%;width:45%" />
+	<figure class = "bottom left"
+		src="/home/hylkema/Documents/Perseus/Presentations/Images/ignitorTest/montage.JPG"
+		style="height:45%;width:45%"/>
+	<textBox class="left" width="50%" style="top:40%;left:13%">
+	    <bList class="smallText" >
+		<i>Kistler 9255 3-component thrust balance </i>
+		<i>2000 fps Phantom camera</i>
+		<i>3 Kistler pressure probes</i>
+	    </bList>
+	</textBox>
+    </slide>
+    
+    <!-- plan -->
+    <slide type="plan" useCoords="plan" done="[0]"/>
+
+    <!-- Pro 38 Ignitor tests: Highspeed video (2500 fps) -->
+    <slide title="Pro 38 Ignitor tests: Highspeed video (2500 fps)"
+	   inPlan="Clustered firing tests/Pro 38 Ignitor tests"
+	   useX   = "experimentalSetup"
+	   y      = "-165"
+	   scale  = "0.02"
+	   class  = "bullet">
+	<video-overlay
+	    src="/home/hylkema/Documents/Perseus/Presentations/Images/ignitorTest/disk.JPG"
+            width="30%"
+	    style="top:5%"/>
+	<video src="/home/hylkema/Documents/Perseus/Presentations/Videos/ignitorTest/Essai2.webm" />
+    </slide>
+
+    <!-- Pro 38 Ignitor tests: Pressure measurements -->
+    <slide title="Pro 38 Ignitor tests: Pressure measurements" moveX="right" scale="0.02">
+	<figure src="/home/hylkema/Documents/Perseus/Presentations/Images/ignitorTest/essai1.svg"
+		class="top left"
+		style="height:45%;width:43%"
+		cap="Test 1"/>
+	<figure src="/home/hylkema/Documents/Perseus/Presentations/Images/ignitorTest/essai2.svg"
+		class="top right"
+		style="height:45%;width:43%"
+		cap="Test 2"/>
+	<figure src="/home/hylkema/Documents/Perseus/Presentations/Images/ignitorTest/essai3.svg"
+		class="bottom left"
+		style="height:45%;width:43%"
+		cap="Test 3"/>
+	<figure src="/home/hylkema/Documents/Perseus/Presentations/Images/ignitorTest/essai4.svg"
+		class="bottom right"
+		style="height:45%;width:43%"
+		cap="Test 4"/>
+    </slide>
+
+    <!-- Pro 38 Ignitor tests: Pressure measurements -->
+    <slide title="Pro 38 Ignitor tests: Pressure measurements" moveX="right" scale="0.02">
+	<figure src="/home/hylkema/Documents/Perseus/Presentations/Images/ignitorTest/essai5.svg"
+		class="top left"
+		style="width:100%"
+		cap="Test 5"/>
+    </slide>
+    
+    <!-- plan -->
+    <slide type="plan" useCoords="plan" done="[0,1]"/>
+    
+    <!-- pro98 cluster tests -->
+    <slide title="Cluster tests : Video"
+	   useX = "experimentalSetup"
+	   y ="-92"
+	   scale="0.02"
+	   inPlan="Clustered firing tests/Pro 98 Cluster tests"
+	   class="bullet">
+	<video src="/home/hylkema/Documents/Perseus/Presentations/Videos/clusterTest/Cesaroni-Fagot1.webm"/>
+    </slide>
+    
+    <!-- Pressure measurements -->
+    <slide title="Cluster tests : Pressure measurements" moveX="right" scale="0.02">
+	<figure src="/home/hylkema/Documents/Perseus/Presentations/Images/clusterTest/tir1-P.svg"/>
+    </slide>
+    
+    <!-- Cluster tests : Coordinate system -->
+    <slide title="Cluster tests : Coordinate system" moveX="right" scale="0.02">
+	<figure src="/home/hylkema/Documents/Perseus/Presentations/Images/clusterTest/moteur.svg"
+		class="right"
+		style="width:40%"/>
+	<figure src="/home/hylkema/Documents/Perseus/Presentations/Images/clusterTest/fagotSetup.svg"
+		class="left"
+		style="width:55%"/>
+    </slide>
+    
+    <!-- Cluster tests : Highspeed video (600 fps) -->
+    <slide title="Cluster tests : Highspeed video (600 fps)" moveX="right" scale="0.02">
+	<video src="/home/hylkema/Documents/Perseus/Presentations/Videos/clusterTest/Cesaroni-Fagot1-600fps.webm"
+	       style="height:75%"/>
+	<div class="bottom leftRight raise" >
+	    <figure src="/home/hylkema/Documents/Perseus/Presentations/Images/clusterTest/fagot1_0.2s.png"
+		    cap="0.2s: ignition motor 1"
+		    style="width:32%"/>
+	    <figure src="/home/hylkema/Documents/Perseus/Presentations/Images/clusterTest/fagot1_0.289s.png"
+		    cap="0.289s: ignition motor 3"
+		    style="width:32%"/>
+	    <figure src="/home/hylkema/Documents/Perseus/Presentations/Images/clusterTest/fagot1_0.352s.png"
+		    cap="0.352s: stable regime"
+		    style="width:32%"/>
+	</div>
+    </slide>
+    
+    <!-- Cluster tests : Thrust and lateral forces -->
+    <slide title="Cluster tests : Thrust and lateral forces" moveX="right" scale="0.02">
+	<figure src="/home/hylkema/Documents/Perseus/Presentations/Images/clusterTest/tir1-F.svg"
+		class="top left"
+		cap="Thrust: Test firing 1"
+		style="width:50%"/>
+	<figure src="/home/hylkema/Documents/Perseus/Presentations/Images/clusterTest/tir2-F.svg"
+		class="top right"
+		cap="Thrust: Test firing 2"
+		style="width:50%"/>
+	<textBox class="left" style="bottom:20%;width:100%">
+	    <bList class="smallText">
+		<i>Initial thrust deficit for test 2, slow iginition one of the motors?</i>
+		<i>Video shows motor 1 and 3 are ok #RDarrow# motor 2 is the suspect</i>
+		<i>Test 2 is the qualification test #RDarrow# no pressure measurements</i>
+	    </bList>
+	</textBox>
+    </slide>
+    
+    <!-- Cluster tests : Moments -->
+    <slide title="Cluster tests : Moments" scale="0.02">
+	<figure src="/home/hylkema/Documents/Perseus/Presentations/Images/clusterTest/tir1-M.svg"
+		class="top left"
+		cap="Thrust: Test firing 1"
+		style="width:50%"/>
+	<figure src="/home/hylkema/Documents/Perseus/Presentations/Images/clusterTest/tir2-M.svg"
+		class="top right"
+		cap="Thrust: Test firing 2"
+		style="width:50%"/>
+	<textBox class="left"  style="bottom:20%;width:100%">
+	    <bList class="smallText">
+		<i>A slow starting motor 2 would result in a positive moment around the Y-axis</i>
+		<i>Figures 1 &amp; 2 confirm this</i>
+	    </bList>
+	</textBox>
+    </slide>
+    
+    <!--Cluster tests : Individual thrust reconstruction  -->
+    <slide title="Cluster tests : Individual thrust reconstruction" moveX="right" scale="0.02">
+	<div class="top left" style="text-align:left;font-size:0.7em;" >
+	     $$\table F_{z},=,F_{1}+F_{2}+F_{3};
+		             M_{x},=,a.(F_{2}+F_{3})-b.F_{1};
+		             M_{y},=,c.(F_{3}-F_{2})$$
+	    Then
+	    $$\table F_{1} , = ,{a. F_{z}-M_{x}}/{a+b};
+		             F_{2} , = ,{F_{z}-F_{1}-{M_{y}}/{c}}/{2};
+		             F_{3} , = ,F_{z}-F_{1}-F_{2}$$
+	</div>
+	<figure src="/home/hylkema/Documents/Perseus/Presentations/Images/clusterTest/moteurSD.svg"
+	        class="top right"
+		style="widt:70%"
+	/>
+    </slide>
+    
+    <!-- Cluster tests : Individual thrust reconstruction -->
+    <slide title="Cluster tests : Individual thrust reconstruction" moveX="right" scale="0.02">
+	<figure src="/home/hylkema/Documents/Perseus/Presentations/Images/clusterTest/tir1-rec.svg"
+		cap="Thrust reconstruction test firing 1 (fig 1)"
+	        class="top left"
+		style="width:50%"/>
+	<figure src="/home/hylkema/Documents/Perseus/Presentations/Images/clusterTest/tir2-rec.svg"
+		cap="Thrust reconstruction test firing 2 (fig 2)"
+	        class="top right"
+		style="width:50%"/>
+	<textBox class="left" style="bottom:20%;width:100%">
+	    <bList class="smallText">
+		<i>Pressure measurements show no difference between the motors for test 1 (after the ignition phase)
+		   #RDarrow# reconstruction not perfect! (slight misalignments)</i>
+		<i>With some faith, figure 2 hints at a slow starting motor 2</i>
+	    </bList>
+	</textBox>
+    </slide>
+    
+    <!-- Conclusion -->
+    <slide title="Conclusion" moveX="right" scale="0.02">
+	<textBox class="left">
+	    <bList style="font-size:70%">
+		<i>Ignition delay &lt; 0.35 s</i>
+		<i>Limited global thrust fluctuations and lateral forces &lt; 20 daN</i>
+		<i>Firing 2 suffered from a slow starting motor 2</i>
+		    <bList style="list-style:inside">
+			<i>this induced an initial thrust deficit</i>
+			<i>lateral forces are comparable for both tests</i>
+		    </bList>
+		    <i>A cluster of 3 Pro 98 motors seems a viable solution for SERA 3</i>
+	    </bList>
+	</textBox>
+	<table class="bottom" style="bottom:15%;right:20%">
+	    <row style="font-size:60%;font-weight:bold">
+		<tableHead>Test</tableHead>
+		<tableHead>Average thrust (N)</tableHead>
+		<tableHead>ISP (s)</tableHead>
+	    </row>
+	    <row style="font-size:60%;font-weight:normal">
+		<cell>cluster test 1</cell>
+		<cell>6307</cell>
+		<cell>189</cell>
+	    </row>
+	    <row style="font-size:60%;font-weight:normal">
+		<cell>cluster test 2</cell>
+		<cell>6250</cell>
+		<cell>190</cell>
+	    </row> 
+	    <row style="font-size:60%;font-weight:normal">
+		<cell>single test 12-15</cell>
+		<cell>2165</cell>
+		<cell>192</cell>
+	    </row>
+	</table>
+    </slide>
+    Test Average thrust (N) ISP (s) 1 6307 189 2 6250 190
+    <!-- plan -->
+    <slide type="plan" useCoords="plan" done="[0,1,2]">
+	<figure src="/home/hylkema/Documents/Perseus/Presentations/Images/carte partie basse.jpg"
+		class="top right"
+		style="width:30%" />
+    </slide>
+    
+    <!-- "Cogwheel experiments : experimental setup -->
+    <slide title="Cogwheel experiments : experimental setup"
+	   inPlan="Cogwheel experiments/Experimental setup"
+	   class="bullet"
+	   useX   = "experimentalSetup"
+	   y      = "55"
+	   scale="0.02">
+	<figure src="/home/hylkema/Documents/Perseus/Presentations/Images/cogWheel/setup.svg"
+		cap="experimental setup"
+		class="top left"
+		style="width:50%"/>
+	<figure src="/home/hylkema/Documents/Perseus/Presentations/Images/cogWheel/straight.JPG"
+		cap="experimental setup"
+		class="top right"
+		style="width:42%"/>
+	<figure src="/home/hylkema/Documents/Perseus/Presentations/Images/cogWheel/bend.JPG"
+		cap="experimental setup"
+		class="bottom right"
+		style="width:42%"/>
+	<textBox class="left" style="bottom:2%;width:50%">
+	    <bList class="smallText" style="font-size:47%" >
+		<i>$P_{ref}$ flush with the chamber wall</i>
+		<i>$P_1$ at the end of the straight conduct (150 mm)</i>
+		<i>$P_2$ at the end of the bend conduct (200 mm)</i>
+		<i>Frequencies 0-2500 Hz</i>
+	    </bList>
+	</textBox>
+    </slide>
+
+    <!-- - plan -->
+    <slide type="plan" useCoords="plan" done="[0,1,2,3]" />
+
+    <!-- Cogwheel experiments : test results -->
+    <slide title="Cogwheel experiments : test results" 
+	   useX   = "experimentalSetup"
+	   y="122"
+	   class="bullet" 
+	   inPlan="Cogwheel experiments/Test results"
+	   scale="0.02">
+	<figure src ="/home/hylkema/Documents/Perseus/Presentations/Images/cogWheel/Pref-P1-S2500.svg"
+		cap="${P_{ref}}\/{P_{1}}$"
+		class="top left"
+		style="width:50%"/>
+	<figure src ="/home/hylkema/Documents/Perseus/Presentations/Images/cogWheel/Pref-P2-S2500.svg"
+		cap="${P_{ref}}\/{P_{1}}$"
+		class="top right"
+		style="width:50%"/>
+	<textBox class="left" style="bottom:13%;width:100%">
+	    <bList class="smallText">
+		<i>$P_1$ first acoustic mode (C/C system $C/{2L}$) ~1150 Hz</i>
+		<i>$P_2$ first acoustic mode (C/C system $C/{2L}$) ~850 Hz</i>
+		<i>Strongest amplification around 200 Hz. Coupling between pressure oscillations and wall deformation?</i>
+	    </bList>
+	</textBox>
+    </slide>
+
+    <!-- Cogwheel experiments : test results -->
+    <slide title="Cogwheel experiments : test results"
+	   moveX="right"
+	   scale="0.02">
+	<figure src="/home/hylkema/Documents/Perseus/Presentations/Images/cogWheel/Rigide.svg"
+		cap="$${P_{ref}}\/{P_{1}}$$"
+		class="top left"
+		style="width:50%"/>
+	<figure src="/home/hylkema/Documents/Perseus/Presentations/Images/cogWheel/modes.svg"
+		class="top right"
+		style="width:46%"/>
+	<textBox class="left" style="bottom:13%;width:100%">
+	    <bList class="smallText">
+		<i>Rigid tube L=110 mm, first acoustic mode (O/C system $C/{4L}$) ~700 Hz</i>
+		<i>P1 first acoustic mode (O/C system $C/{4L}$) ~566 Hz is not amplified</i>
+		<bList>
+		    <i>O/C sytem #RDarrow# acoustic pressure significant in the middle of the tube</i>
+		    <i>Tube deformation might damp this mode</i>
+		</bList>
+	    </bList>
+	</textBox>
+    </slide>
+
+
+    <!-- Conclusion -->
+    <slide title="Conclusion" moveX="right" scale="0.02">
+	<textBox>
+	    <bList class="mediumText">
+		<i>Amplification factors range from 0.6 to 3</i>
+		<i>A dependance on the tubing material has been shown</i>
+		<i>These effects need to be taken into account for signal analysis of the pressure data</i>
+	    </bList>
+	</textBox>
+    </slide>
+
+    <!-- Overview  -->
+    <slide id="overview" x="3000" y="1500" scale="5">
+	<div class="hcenter vcenter">Thank you for your attention</div>
+    </slide>
+
+    <!-- Annex -->
+    <slide title="all CESARONI firings" x="3000" y="0" rotateY="90">
+	<figure src="/home/hylkema/Documents/Perseus/Presentations/Images/Divers/CourbesP ensemble tfix.svg"/>
+    </slide>
+</presentation>

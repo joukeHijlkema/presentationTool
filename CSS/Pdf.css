@@ -1,0 +1,27 @@
+.video {
+    background: url("CONTENT/Video.svg");
+    display: block;
+    border-style: solid;
+    border-width: 2;
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+.video video {
+    display:none
+}
+.leftRight {
+    display:inline-block
+}
+.leftRight figure {
+    float:left
+}
+
+.slide {
+    page-break-after:always;
+}
+
+img {
+    -webkit-transform: translateZ(4px);
+}

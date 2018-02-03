@@ -1,0 +1,24 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+#
+#  =================================================
+# presentationsTool
+#   - Author jouke hijlkema <jouke.hijlkema@onera.fr>
+#   - Thu Jan 19 12:38:12 2017
+#   - Initial Version 1.0
+#  =================================================
+import sys
+from lxml import etree
+
+import Classes.dirStructure as dirStructure
+from Classes.Slide import Slide
+from Classes.Coords import Coords
+
+# read the script
+script   = etree.parse(sys.argv[1]).getroot()
+params   = script.find("./parameters")
+myCoords = Coords(params)
+
+if "logos" in params.attrib:
+    for l in eval(params.get("logos")):
+        print(l)

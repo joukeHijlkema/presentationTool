@@ -1,0 +1,205 @@
+.slide {
+    display: block;
+    height: 700px;
+    width: 1000px;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    min-height: 740px;
+    background: linear-gradient(rgb(192,193,223),rgb(255,255,255));
+}
+
+#footer {
+	position: absolute;
+	display: block;
+	bottom:1%;
+	left:7%;
+}
+#footer .footerTitle {
+	display: inline;
+	font-size: 1.2em;
+	color: #232947;
+}
+#footer .footerDate {
+	display: inline;
+	padding-left: 1em;
+	font-size: 1.1em;
+	color: #23317A;
+}
+
+#seraLogo {
+    position: absolute;
+    bottom:0;
+}
+
+#cnesLogo {
+    position: absolute;
+    bottom:5px;
+    right:0;
+}
+
+#oneraLogo {
+    position: absolute;
+    display: block;
+    bottom:0%;
+    right:11%;
+ }
+
+#slideTitle {
+    position: absolute;
+    display: block;
+    top:50px;
+    margin-left:auto;
+    margin-right:auto;
+    font-size:2em;
+    width:100%;
+    text-align:center;
+}
+.first_slide {
+  background:url(../IMAGES/s1.png) center;
+  background-size: 100% 100%;
+  }
+
+.title {
+  background:url(../IMAGES/s2.png) center;
+  background-size: 100% 100%;
+}
+
+.title h1 {
+    position: absolute;
+    top: 30%;
+    width: 100%;
+    margin: auto;
+    text-align: center;
+    color: #CBCBD2;
+    font-size: 1.3em;
+    line-height:1.1em;
+    vertical-align:middle;
+}
+
+.title h2 {
+    position: absolute;
+    top: 65%;
+    width: 100%;
+    margin: auto;
+    text-align: center;
+    font-size: 0.8em;
+    vertical-align:middle;
+    color: #CBCBD2;
+}
+
+.done {
+    opacity:0.2;
+}
+
+#plan ul {
+    margin-left:60px;
+    list-style-type:none;
+}
+#s4Text {
+    position: absolute;
+    bottom: 43%;
+    left:15%;
+    width:43% ;
+}
+figure {
+    display:table;
+    margin: auto;
+    padding: 0;
+}
+figcaption {
+    display: table-caption;
+    caption-side: top;
+    text-align:center;
+    font-size:0.4em;
+    color: #E5E5F1;
+    background: #444797;
+}
+figcaption fmath * {
+    font-family: Arial, sans-serif;
+    color: #E5E5F1;
+}
+
+.textBox {
+    background: #7E80B7;
+    padding:10px;
+    border-radius: 25px;
+    padding-left:30px;
+    padding-right:30px;
+}
+
+/* ul.bullets li {
+   background-image: url(icons/bullet1.png);
+   background-size: 0.6em 0.6em;
+   background-repeat: no-repeat;
+   background-position: 0px 0.4em;
+   padding-left: 0.7em;
+   }
+ */
+div .bullet.future {
+    opacity:1.0;
+}
+div .bullet.past {
+    opacity:0.1;
+}
+
+.mediumText {
+    font-size:0.45em;
+}
+.largeText {
+    font-size:0.6em;
+}
+
+/* list indentation */
+/* Main Level */
+ul{
+    margin-left:0px;
+    list-style-type:disc;
+}
+
+/* Second Level */
+ul ul{
+    margin-left:1em;
+}
+
+/* Third Level */
+ul ul ul{
+    margin-left:2em;
+}
+
+li {
+    list-style-position: outside;
+    margin-left: 1em;
+}
+
+#annexe1.future {
+    opacity:0;
+}
+.smallText {
+    font-size:50%;
+}
+
+.mediumText {
+    font-size:80%;
+}
+
+.bigText {
+    font-size:150%;
+}
+
+.plan ul {
+    list-style-type:none;
+    padding-left:0;
+}
+
+.plan ul ul {
+    padding-left:0;
+}
+    
+table, th, td {
+    border: 1px solid black;
+    text-align:left;
+    padding-left:50px;
+    padding-right:10px;
+}

@@ -1,0 +1,51 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+#
+#  =================================================
+# Coords
+#   - Author jouke hijlkema <jouke.hijlkema@onera.fr>
+#   - Fri Jan 20 11:23:30 2017
+#   - Initial Version 1.0
+#  =================================================
+
+class Coords:
+    def __init__(self,Params):
+       "defines the coordinate system"
+       self.W     = int(Params.get("slideWidth"))
+       self.H     = int(Params.get("slideHeight"))
+       self.X     = 0
+       self.Y     = 0
+       self.scale = 1.0
+    
+    ## --------------------------------------------------------------
+    ## Description : update the coordinates
+    ## NOTE :
+    ## -
+    ## Author : jouke hylkema
+    ## date   : 20-33-2017 11:33:19
+    ## --------------------------------------------------------------
+    def update (self,s):
+        sc = 0.5*(self.scale)
+        self.scale = float(s.get("scale") if "scale" in s.attrib else "1.0")
+        sc += 0.5*(self.scale)
+
+        if "x" in s.attrib:
+            self.X = float(s.get("x"))
+        elif "moveX" in s.attrib:
+            if s.get("moveX") == "left":
+                self.X-=sc*self.W
+            elif s.get("moveX") == "right":
+                self.X+=sc*self.W
+
+        if "y" in s.attrib:
+            self.Y = float(s.get("y"))
+        elif "moveY" in s.attrib:
+            if s.get("moveY") == "up":
+                self.Y-=sc*self.H
+            elif s.get("moveY") == "down":
+                self.Y+=sc*self.W
+        
+       
+        
+        print ("X=%s,Y=%s"%(self.X,self.Y))
+        

@@ -1,0 +1,343 @@
+<presentation>
+    <parameters
+root="/home/hylkema/tmp"
+templates="/home/hylkema/Projects/myPresentationsTool"
+imageRoot="/home/hylkema/Documents/Images"
+videoRoot="/home/hylkema/Documents/Videos"
+slideWidth="1000"
+slideHeight="700"
+margin="500"
+css="ODAS.css"
+logos="{'oneraLogo':'#templates#/CSS/Logos/onera.svg'}"
+backgrounds="{
+	     'bg1':'#templates#/CSS/Backgrounds/s1.png',
+	     'bg2':'#templates#/CSS/Backgrounds/s2.png',
+	     'bg3':'#imageRoot#/banc.png',
+	     'slideTop':'#templates#/CSS/Backgrounds/titleTop.png',
+	     'slideBot':'#templates#/CSS/Backgrounds/titleBottom.png'}"
+footerTitle="ODAS 2017"
+footerDate="7-9 June 2017 - Aussois"
+convertImages="True"
+makePdf="False"
+    />
+
+    <slide type="firstSlide"/>
+
+    <slide type="titleSlide"
+	   moveX="right"
+	   presTitle="CFD-assisted particle size distribution measurements"
+	   subTitle="In the KeRC experimental set-up at ONERA"
+	   author="Jouke Hijlkema"/>
+
+    <!-- Plan -->
+    <slide type="plan" moveX="right" rememberCoords="plan" title="Outline" ></slide>
+
+    <!--Introduction of the laboratory  -->
+    <slide moveX  = "right"
+	   title  = "Introduction of the laboratory"
+	   inPlan = "Introduction of the laboratory">
+	<figure src="lp9.png"
+		class="top left"
+		style="width:50%;z-index:-1"/>
+	<figure src="fusex.png"
+		class="top right"
+		style="height:100%;z-index:-1"/>
+	<figure src="hycom.png"
+		class="bottom left"
+		style="width:50%;z-index:-1"/>
+	<textBox class="justCenter transparent" style="width:80%;height:90%">
+	    <bList>
+		<i>10 permanent members</i>
+		<i>Solid propulsion systems</i>
+		<bList>
+		    <i>P230 Ariane 5</i>
+		    <i>P180 Ariane 6</i>
+		</bList>
+		<i>Liquid propulsion systems</i>
+		<bList>
+		    <i>Military applications</i>
+		</bList>
+		<i>Hybrid propulsion sytems</i>
+		<bList>
+		    <i>Satelite propuslion</i>
+		    <i>Millitary applications</i>
+		</bList>
+	    </bList>
+	</textBox>
+    </slide>
+    <!--Why important  -->
+    <slide moveX  = "right"
+	   title  = "Why is the size distribution important"
+	   subtitle ="Aluminium oxide genesis"
+	   inPlan = "Why is the size distribution important">
+	<figure src="Al2O3_genese.svg"
+		cap="$Al_2O_3$ genesis"
+		class="top left"
+		style="heigth:90%"/>
+	
+	<textBox class="top right" style="width:30%;font-size:50%">
+	    Ariane 5 type propellant contains 18% aluminum which results in about 32% of aluminum oxide in the internal gas flow
+	</textBox>
+    </slide>
+    <slide moveY="down" title="Why is the size distribution important">
+	<figure src="ODP1.png"
+		class="bottom hcenter"
+		style="width:100%;margin-bottom:50"/>
+	<figure src="ODP2.png"
+		class="top right"
+		style="margin-top:50;width:40%"/>
+	<textBox class="top left" style="margin-top:50;width:50%" >
+	    <bList style="font-size:55%">
+		<i>Particles have a big influence on hydrodynamic structures</i>
+                <i>Couping of hydrodynamics and  acoustics results in pressure oscillations</i>
+                <i>Thrust oscillations: 2 to 3.5%</i>
+                <i>High vibrational loads</i>
+	    </bList>
+	</textBox>
+    </slide>
+    <slide moveY="down" title="Why is the size distribution important">
+	<figure src="slagformation.svg"
+		class="top left"
+		style="width:40%"/>
+	<figure src="solid-rocket.png"
+		class="top right"
+		style="width:40%;margin-top:10"/>
+	<textBox style="position:absolute;right:10%;top:50%;width:40%">
+	    <bList style="font-size:60%">
+		<i>2 to 3 tonnes of useless load</i>
+                <i>Sloshing might induce thrust oscillations</i>
+	    </bList>
+	</textBox>
+	<textBox class="important bottom left">
+	    It is important to know the size distribution
+	</textBox>
+    </slide>
+
+    <!-- Experimental setup -->
+    <slide useY="plan" moveX="right" title="Presentation of the experimental set-up"
+	   inPlan="Presentation of the experimental set-up">
+	<figure src="SchemaKeRC.svg"
+		class="hcenter"
+		style="width:100%"/>
+    </slide>
+    <slide  moveY="down" title="Kerc set-up in action">
+	<video src="kerc.webm"  style="position:absolute;left:0%;width:50%;height:50%" />
+	<figure src="KercPcPp.svg" style="position:absolute;right:0%;width:50%;height:50%" />
+    </slide>
+    <slide  moveY="down" title="Exploitation of the KeRC results">
+	<figure src="KeRCFiring.png"
+		class="top left"
+		style="width:30%"/>
+	<figure src="collectorTrim.png"
+		class="bottom left"
+		style="width:30%"/>
+	
+	<figure src="/init.svg"
+		style="width:30%;position:absolute;left:35%;top:0%"/>
+	<figure src="rinsing.svg"
+		style="width:30%;position:absolute;left:35%;top:33%"/>
+	<figure src="us.svg"
+		style="width:30%;position:absolute;left:35%;bottom:0%"/>
+
+	<textBox style="width:28%;position:absolute;right:0%;top:5%;font-size:40%">
+	    Firing a 50/50 block
+	    <bList>
+		<i>cold propellant (~1959K)</i>
+		<i>50% 3 &#956;m 50% 70 &#956;m $ZrO_2$</i>
+	    </bList>
+	</textBox>
+	<textBox style="width:28%;position:absolute;right:0%;top:43%;font-size:40%">
+	    Firing a 50/50 block
+	    <bList>
+		After rinsing and filtering, carbon pollution is important
+	    </bList>
+	</textBox>
+	<textBox style="width:28%;position:absolute;right:0%;bottom:10%;font-size:40%">
+	    Firing a 50/50 block
+	    <bList>
+		After calcining and ultrasound treatment
+	    </bList>
+	</textBox>
+    </slide>
+    <!-- Why CFD  -->
+    <slide useY="plan" moveX="right"
+	   title="Why do we need CFD support"
+	   inPlan="Why do we need CFD support">
+	
+	<figure src="init.svg"
+		class="top left"
+		cap="What we expect"
+		style="width:50%"/>
+	<figure src="us.svg"
+		class="top right"
+		cap="What we find"
+		style="width:50%"/>
+    </slide>
+    <slide moveY="down" title="Lagrangian simulation">
+	<video src="calc.webm" style="height:60%"/>
+	<textBox style="heigth:20%;font-size:60%">
+	    Particles are captured by the recirculation zone just behind the fuel grain and dissipated away from the probe.
+            Smaller particles are more prone to getting caught!
+	</textBox>
+    </slide>
+    <!-- Details CFD -->
+    <slide useY="plan" moveX="right"
+	   title="Details of the simulation"
+	   inPlan="Details of the simulation">
+	<figure src="measurements.svg"
+		class="top left"
+		style="width:50%"/>
+	<textBox class="bottom" style="maring-left:auto;margin-right:auto;font-size:70%">
+	    The experiment we simulated is the <span>5</span><sup>th</sup><span> KeRC firing.</span>
+	    <bList>
+		<i>Fuel grain: JD 9404AL aluminized Butalite</i>
+		<i>Sampled 1.07 g</i>
+		<i>&#7745; at fuel grain surface ~0.653 ${kg}/{m^2}$ of $Al_2O_3$</i>
+	    </bList>
+	</textBox>
+	<textBox class="top right" style="font-size:50%" >
+	    Initial guess : \\ 2 classes \\ 50% small and 50% larger particles
+	</textBox>
+    </slide>
+    <slide title="Solver" moveY="down" >
+	<textBox>
+	    <bList>
+		<i>CEDRE</i>
+		<bList>
+		    <i>multi physics</i>
+                    <i>multi solver</i>
+                    <i>massively parallel</i>
+		</bList>
+		<i>Gaseous phase</i>
+		<bList>
+		    <i>classical $2^{nd}$ order Navier-Stokes</i>
+		</bList>
+		<i>Dispersed phase</i>
+		<bList>
+		    <i>Monte-Carlo type Lagrangian solver</i>
+		</bList>
+	    </bList>
+	</textBox>
+    </slide>
+    <slide title="Mesh" moveY="down">
+	<figure src="Mesh.png"
+		style="width:100%"/>
+	<textBox style="font-size:60%" >
+	    <bList>
+		<i>Axi-symmetrical unstructured mesh</i>
+                <i>Instance is halfway the sampling interval</i>
+                <i>~40000 rectangles</i>
+                <i>~100 triangles</i>
+	    </bList>
+	</textBox>
+    </slide>
+    <slide title="Boundary conditions" moveY="down">
+	<figure src="Bocos.png"
+		style="width:100%"/>
+    </slide>
+    <!-- Resultats -->
+    <slide title="first run"
+	   inPlan="Results"
+	   useY="plan" moveX="right">
+	<table class="bottom right" style="width:100%;font-size:35%">
+	    <tr>
+                <th>class</th>
+                <th>diameter (&#956;m)</th>
+                <th>mass fraction (%)</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>1</td>
+                <td>50</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>15</td>
+                <td>50</td>
+            </tr>
+	</table>
+	<figure src="dist1.svg"
+		class="top"
+		style="margin-left:auto;margin-right:auto;width:70%"/>
+    </slide>
+    <slide title="second run" moveY="down">
+	<table class="bottom right" style="width:100%;font-size:35%">
+	    <tr>
+                <th>class</th>
+                <th>diameter (&#956;m)</th>
+                <th>mass fraction (%)</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>1</td>
+                <td>25</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>5</td>
+                <td>12.5</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>10</td>
+                <td>25</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>15</td>
+                <td>37.5</td>
+            </tr>
+	</table>
+	<figure src="dist2.svg"
+		class="top"
+		style="margin-left:auto;margin-right:auto;width:70%"/>
+    </slide>
+    <slide title="third run" moveY="down">
+	<table class="bottom right" style="width:100%;font-size:35%">
+	    <tr>
+                <th>class</th>
+                <th>diameter (&#956;m)</th>
+                <th>mass fraction (%)</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>1</td>
+                <td>15</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>5</td>
+                <td>10</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>7.5</td>
+                <td>15</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>10</td>
+                <td>18.3</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>12.5</td>
+                <td>20</td>
+            </tr>
+            <tr>
+                <td>6</td>
+                <td>15</td>
+                <td>21.7</td>
+            </tr>
+ 	</table>
+	<figure src="dist3.svg"
+		class="top"
+		style="margin-left:auto;margin-right:auto;width:70%"/>
+    </slide>
+    
+    <!-- Overview  -->
+    <slide id="overview" x="3000" y="1500" scale="5">
+	<div class="hcenter vcenter">Thank you for your attention</div>
+    </slide>
+
+</presentation>
