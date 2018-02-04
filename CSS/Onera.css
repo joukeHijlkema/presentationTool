@@ -1,6 +1,9 @@
 .slide {
     display: block;
 }
+div {
+    display: block;
+}
 
 body {
     font-family: 'Arial', sans-serif;

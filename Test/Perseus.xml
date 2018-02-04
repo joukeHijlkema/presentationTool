@@ -1,16 +1,23 @@
 <presentation>
     <parameters
-	root="/home/hylkema/Documents/Perseus/Presentations/Seminaire2017" 
+	root="/tmp" 
+	templates="/home/hylkema/Projects/presentationTool"
+	imageRoot="/home/hylkema/Documents/Images"
+	videoRoot="/home/hylkema/Documents/Videos"
 	slideWidth="1000"
 	slideHeight="700"
 	margin="500"
-	css="CSS/Perseus.css"
-	logos="{'oneraLogo':'CSS/Logos/onera.svg',
-	       'perseusLogo':'CSS/Logos/Perseus.png',
-	       'seraLogo':'CSS/Logos/Sera.png',
-	       'cnesLogo':'CSS/Logos/Cnes.png'}"
-	bg1="CSS/Backgrounds/s1.png"
-	bg2="CSS/Backgrounds/s2.png"
+	css="#templates#/CSS/Perseus.css"
+	logos="{'oneraLogo':'#templates#/CSS/Logos/onera.svg',
+	      'perseusLogo':'#templates#/CSS/Logos/Perseus.png',
+	      'seraLogo':'#templates#/CSS/Logos/Sera.png',
+	      'cnesLogo':'#templates#/CSS/Logos/Cnes.png'}"
+	backgrounds="{
+	      'bg1':'#templates#/CSS/Backgrounds/s1.png',
+	      'bg2':'#templates#/CSS/Backgrounds/s2.png',
+	      'bg3':'#imageRoot#/banc.png',
+	      'slideTop':'#templates#/CSS/Backgrounds/titleTop.png',
+	      'slideBot':'#templates#/CSS/Backgrounds/titleBottom.png'}"
 	footerTitle="Perseus seminar 2017"
 	footerDate="Massy Palaiseau 26-27 January 2017"
 	convertImages="True"

@@ -6,17 +6,22 @@
 #   - Author jouke hijlkema <jouke.hijlkema@onera.fr>
 #   - Thu Jan 19 13:05:20 2017
 #   - Initial Version 1.0
+# Todo
+# - scale boxes to content
 #  =================================================
 from lxml import etree
 import re
+import os
+import uuid
 
 class Slide:
-    def __init__(self,s,Coords,Dirs,number):
+    def __init__(self,s,Coords,Dirs,number,lastSlide):
         "create a new slide"
 
         self.parseSlide(s)
         self.Dirs   = Dirs
         self.Coords = Coords
+        self.Name   = "slide_%s"%number
         
         self.source = etree.Element('div')
         
@@ -30,7 +35,9 @@ class Slide:
         
         self.source.set('data-title',s.get("title") if "title" in s.attrib else "")
         self.source.set('data-subtitle',s.get("subtitle") if "subtitle" in s.attrib else "")
-        self.source.set('data-number',"%s"%number)
+        self.source.set('data-number',"%s/%s"%(number,lastSlide))
+        self.source.set('data-name',"%s"%self.Name)
+
         self.inPlan = s.get('inPlan') if 'inPlan' in s.attrib else None
         self.Done   = eval(s.get("done")) if "done" in s.attrib else [] 
         self.type   = s.get('type')
@@ -65,7 +72,12 @@ class Slide:
             self.source.set('id',"slide_%d"%number)
 
         for i in s:
-            self.source.append(self.chose(i))
+            if type(i) != etree._Element:
+                print("skipping unknown stuff")
+                continue
+            e = self.chose(i)
+            if e!=None:
+                self.source.append(e)
 
     ## --------------------------------------------------------------
     ## Description : Parse slide
@@ -114,20 +126,27 @@ class Slide:
             out=self.generic(i,'th')
         elif i.tag=="cell":
             out=self.generic(i,'td')
+        elif i.tag=="arrow":
+            out=self.arrow(i)
+        elif i.tag=="arrows":
+            out=self.generic(i,"svg")
+            out.set("width","100%")
+            out.set("height","100%")
         else:
             out=self.generic(i,i.tag)
-            # print("!! used generic %s"%i.tag) 
+            print("!! used generic %s"%i.tag) 
 
-        if "class" in i.attrib:
-            out.set("class","%s %s"%(i.tag,i.get("class")))
-        else:
-            out.set("class","%s"%i.tag)
-        if "style" in i.attrib:
-            out.set("style",i.get("style"))
-        if "id" in i.attrib:
-            out.set("id",i.get("id"))
-        if "width" in i.attrib:
-            out.set("width",i.get("width"))
+        if out!=None:
+            if "class" in i.attrib:
+                out.set("class","%s %s"%(i.tag,i.get("class")))
+            else:
+                out.set("class","%s"%i.tag)
+            if "style" in i.attrib:
+                out.set("style",i.get("style"))
+            if "id" in i.attrib:
+                out.set("id",i.get("id"))
+            if "width" in i.attrib:
+                out.set("width",i.get("width"))
 
         return out
 
@@ -225,13 +244,40 @@ class Slide:
     ## --------------------------------------------------------------
     def video (self,s) -> etree._Element:
         out = etree.Element('div')
-        v = etree.Element('video')
-        v.set("src",self.Dirs.cpVideo(s.get("src")))
-        v.set('controls','controls')
-        v.set('loop','loop')
+        if os.path.isfile(s.get("src")):
+            v = etree.Element('video')
+            v.set("src",self.Dirs.cpVideo(s.get("src")))
+            v.set('controls','controls')
+            v.set('loop','loop')
+        else:
+            v = etree.Element("tag")
+            v.text=("Video %s not found"%s.get("src"))
         out.append(v)
         return out
 
+    ## --------------------------------------------------------------
+    ## Description : arrow
+    ## NOTE : 
+    ## -
+    ## Author : jouke hylkema
+    ## date   : 04-28-2018 14:28:24
+    ## --------------------------------------------------------------
+    def arrow (self,s):
+        out = etree.Element("path")
+        id = uuid.uuid4()
+        out.set("id","%s"%id)
+        if not "style" in s.attrib:
+            out.set("stroke","black")
+            out.set("fill","black")
+            out.set("stroke-width","10")
+        
+        link = "%s:%s:%s"%(id,s.get("from"),s.get("to"))
+        if self.source.get('data-links'):
+            link += ",%s"%self.source.get('data-links')
+        self.source.set('data-links',link)
+        
+        return out
+        
     ## --------------------------------------------------------------
     ## Description :parse text for special characters
     ## NOTE :

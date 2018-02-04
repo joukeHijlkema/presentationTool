@@ -43,11 +43,12 @@ document.addEventListener( "impress:stepenter", function(event) {
     // load titles
     var title = target.hasAttribute("data-title") ? target.getAttribute("data-title"):"";
     var sTitle = target.hasAttribute("data-subtitle") ? target.getAttribute("data-subtitle"):"";
-    var number = target.hasAttribute("data-title") ? target.getAttribute("data-number"):"";
+    var number = target.hasAttribute("data-number") ? target.getAttribute("data-number"):"";
     document.getElementById("slideTitle").innerHTML= title;
     document.getElementById("slideSubTitle").innerHTML= sTitle;
     document.getElementById("slideNumber").innerHTML= number;
-    // console.log("done")
+    if (target.hasAttribute("data-links")) makeLinks(target.getAttribute("data-links",target));
+    // console.log(target.getAttribute("data-links"))
 })
 
 
@@ -69,3 +70,81 @@ document.addEventListener( "impress:stepleave", function(event) {
     // console.log("done")
 })
 	
+function makeLinks(links,slide) {
+    console.log("link : "+links);
+    var slideBB = target.getBoundingClientRect();
+    var O      = new Vector(slideBB.x,slideBB.y);
+    for (let pair of links.split(",")) {
+	var elts   = pair.split(":");
+	var line = document.getElementById(elts[0])
+	var src = document.getElementById(elts[1].split(";")[0])
+	var srcBB  = src.getBoundingClientRect();
+	var srcAnc = elts[1].split(";")[1];
+	var trg = document.getElementById(elts[2].split(";")[0])
+	var trgBB  = trg.getBoundingClientRect();
+	var trgAnc = elts[2].split(";")[1];
+
+	P1 = new Vector(0.5*(srcBB.left+srcBB.right),0.5*(srcBB.bottom+srcBB.top));
+	var dx = 0.6*srcBB.width;
+	var dy = 0.6*srcBB.height;
+	switch (srcAnc) {
+	case "n":
+	    P1.subtract(new Vector(0,dy));
+	    break;
+	case "e":
+	    P1.add(new Vector(dx,0));
+	    break;
+	case "s":
+	    P1.add(new Vector(0,dy));
+	    break;
+	case "w":
+	    P1.subtract(new Vector(dx,0));
+	}
+	P2 = new Vector(0.5*(trgBB.left+trgBB.right),0.5*(trgBB.bottom+trgBB.top));
+	dx = 0.6*trgBB.width;
+	dy = 0.6*trgBB.height;
+	switch (trgAnc) {
+	case "n":
+	    P2.subtract(new Vector(0,dy));
+	    break;
+	case "e":
+	    P2.add(new Vector(dx,0));
+	    break;
+	case "s":
+	    P2.add(new Vector(0,dy));
+	    break;
+	case "w":
+	    P2.subtract(new Vector(dx,0));
+	}
+	
+	var arrow = document.getElementById("svg-"+target.getAttribute("data-name"));
+	line.setAttribute("d",arrowString(O,P1,P2,10,5));
+	line.setAttribute("stroke", "black");  
+	line.setAttribute("stroke-width", 10);  
+	line.setAttribute("fill", "black");  
+    }
+}
+
+function arrowString(O,P1,P2,l,w) {
+    dP = Vector.subtract(P2,P1).normalize();
+    nP = Vector.rotate(dP,0.5*Math.PI);
+    // P1.subtract(O).add(Vector.multiply(dP,20));
+    // P2.subtract(O).subtract(Vector.multiply(dP,20));
+    P1.subtract(O);
+    P2.subtract(O);
+    P3 = Vector.subtract(P2,Vector.multiply(dP,l));
+    P4 = Vector.add(P3,Vector.multiply(nP,w));
+    P5 = Vector.subtract(P3,Vector.multiply(nP,w));
+    
+    var Pt = new Vector(P2.x,P2.y);
+    var d = "M"+P1.x+" "+P1.y;
+    d+= "L "+P3.x+" "+P3.y;
+    d+= "L "+P4.x+" "+P4.y;
+    d+= "L "+P2.x+" "+P2.y;
+    d+= "L "+P5.x+" "+P5.y;
+    d+= "L "+P3.x+" "+P3.y;
+    
+    console.log(d);
+
+    return d;
+}

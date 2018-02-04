@@ -25,6 +25,10 @@ import math
 import pdfkit
 import os
 
+from colorama import Fore, Back, Style
+
+print(Fore.WHITE+Back.BLUE+"!!!! Starts parsing !!!!"+Style.RESET_ALL)
+
 # read the script
 script   = etree.parse(sys.argv[1]).getroot()
 progBase = os.path.dirname(os.path.realpath(sys.argv[0]))
@@ -36,11 +40,18 @@ myDirStruct = dirStructure.dirStructure(params,myCoords,progBase)
 #construct the slides
 Slides    = []
 counter   = 0
+if "lastSlide" in params.attrib:
+    lastSlide = params.get("lastSlide")
+else:
+    lastSlide = len(script.findall("./slide"))-1
+
+print("lastSlide = %s"%lastSlide)
+
 for s in script.findall("./slide"):
     title = "%s"%s.get("title")
     print ("found slide with title '%s'"%title.encode("utf-8"))
     myCoords.update(s)
-    newSlide = Slide(s,myCoords,myDirStruct,counter)
+    newSlide = Slide(s,myCoords,myDirStruct,counter,lastSlide)
     Slides.append(newSlide)
     counter+=1
 
@@ -91,7 +102,7 @@ for s in Slides:
 template = Template("%s/Templates/presentation.html"%progBase,params,myDirStruct)
 for s in Slides:
     template.append(s)
-
+    
 # write the presentation file
 template.write("%s/presentation.html"%myDirStruct.root)
 

@@ -10,6 +10,7 @@
 import os
 import shutil
 import subprocess
+from colorama import Fore, Back, Style
 
 class dirStructure:
     def __init__(self,Params,Coords,progBase,root=""):
@@ -27,6 +28,7 @@ class dirStructure:
         # copy the javascript
         shutil.copyfile("%s/javaScript/impress.js/js/impress.js"%progBase,"%s/JS/impress.js"%self.root)
         shutil.copyfile("%s/javaScript/myImpress.js"%progBase,"%s/JS/myImpress.js"%self.root)
+        shutil.copyfile("%s/javaScript/vector.js"%progBase,"%s/JS/vector.js"%self.root)
         shutil.copyfile("%s/javaScript/pdf.js"%progBase,"%s/JS/pdf.js"%self.root)
         for f in ["jqmath-0.4.3.css","jqmath-etc-0.4.5.min.js","jquery-1.4.3.min.js"]:
             shutil.copyfile("%s/javaScript/mathscribe/%s"%(progBase,f),"%s/JS/%s"%(self.root,f))
@@ -134,11 +136,11 @@ class dirStructure:
             else:
                 print("don't know what to do with %s, skipping"%path)
 
-            print("converting %s to %s (%sx%s) using : %s"%(path,outFileShort,W,H,cmd))
+            print("converting %s to %s (%sx%s) using : %s"%(path,outFileShort,W,H," ".join(cmd)))
             try:
                 subprocess.check_output(cmd,stderr=subprocess.STDOUT)
             except subprocess.CalledProcessError as e:
-                print(str.join(' ',cmd))
+                print(Fore.WHITE+Back.RED+"!!!! ERROR !!!!"+Style.RESET_ALL)
                 print(e)
                 print(e.output)
         else:

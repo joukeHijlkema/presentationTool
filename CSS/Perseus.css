@@ -28,6 +28,12 @@ body {
 	color: #23317A;
 }
 
+#slideNumber {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
 #seraLogo {
     position: absolute;
     bottom:0;
