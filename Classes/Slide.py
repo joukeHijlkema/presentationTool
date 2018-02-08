@@ -114,7 +114,7 @@ class Slide:
     ## Author : jouke hylkema
     ## date   : 20-26-2017 15:26:56
     ## --------------------------------------------------------------
-    def chose (self,i) -> etree._Element:
+    def chose (self,i):
 
         out=None
         if i.tag=="video-overlay":
