@@ -30,12 +30,12 @@
     margin-bottom:auto;
 }
 .leftRight {
-    display: flex;                  /\* establish flex container *\/
-    flex-direction: row;            /\* default value; can be omitted *\/
-    flex-wrap: nowrap;              /\* default value; can be omitted *\/
+    display: flex;                 
+    flex-direction: row;            
+    flex-wrap: nowrap;             
 
     border: 1px dashed black;
-    justify-content: space-between; /\* switched from default (flex-start, see below) *\/
+    justify-content: space-between;
     background-color: lightyellow;
 }
 

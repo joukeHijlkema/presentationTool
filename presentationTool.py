@@ -12,7 +12,7 @@
 ## ============================
 
 import sys
-from lxml import etree
+from lxml import etree, objectify
 from collections import OrderedDict
 
 import Classes.dirStructure as dirStructure
@@ -30,7 +30,8 @@ from colorama import Fore, Back, Style
 print(Fore.WHITE+Back.BLUE+"!!!! Starts parsing !!!!"+Style.RESET_ALL)
 
 # read the script
-script   = etree.parse(sys.argv[1]).getroot()
+parser = etree.XMLParser(remove_comments=True)
+script   = objectify.parse(sys.argv[1],parser=parser).getroot()
 progBase = os.path.dirname(os.path.realpath(sys.argv[0]))
 params   = script.find("./parameters")
 myCoords = Coords(params)

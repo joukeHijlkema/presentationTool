@@ -10,6 +10,7 @@
 import os
 import shutil
 import subprocess
+import sys
 from colorama import Fore, Back, Style
 
 class dirStructure:
@@ -95,7 +96,13 @@ class dirStructure:
     def cpVideo (self,path):
         if os.path.dirname(path)=='':
             path=os.path.join(self.videoRoot,path)
-        shutil.copy(path,"%s/VIDEO/%s"%(self.root,os.path.basename(path)))
+
+        try:
+            shutil.copy(path,"%s/VIDEO/%s"%(self.root,os.path.basename(path)))
+        except:
+            print(Fore.WHITE+Back.RED+"!!!! ERROR !!!!"+Style.RESET_ALL)
+            print(sys.exc_info()[0])
+            
         return "VIDEO/%s"%os.path.basename(path)
 
     ## --------------------------------------------------------------

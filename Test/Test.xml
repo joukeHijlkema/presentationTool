@@ -1,85 +1,166 @@
 <presentation>
     <parameters
-	root="/home/hylkema/tmp"
-	      templates="/home/hylkema/Projects/presentationTool"
-	      imageRoot="/home/hylkema/Documents/Images"
-	      videoRoot="/home/hylkema/Documents/Videos"
-	      slideWidth="1000"
-	      slideHeight="700"
-	      margin="500"
-	      css="ODAS.css"
-	      logos="{'oneraLogo':'#templates#/CSS/Logos/onera.svg'}"
-	      backgrounds="{
-	      'bg1':'#templates#/CSS/Backgrounds/s1.png',
-	      'bg2':'#templates#/CSS/Backgrounds/s2.png',
-	      'bg3':'#imageRoot#/banc.png',
+	root="/tmp"
+	templates="/home/hylkema/Projects/presentationTool"
+	imageRoot="/home/hylkema/Projects/presentationTool/Test/Images"
+	videoRoot="/home/hylkema/Projects/presentationTool/Test/Videos"
+	slideWidth="1000"
+	slideHeight="700"
+	margin="500"
+	css="Test.css"
+	logos="{'myLogo':'#imageRoot#/logo.jpg'}"
+	backgrounds="{
+	      'bg1':'#imageRoot#/title1.jpg',
+	      'bg2':'#imageRoot#/title1.jpg',
 	      'slideTop':'#templates#/CSS/Backgrounds/titleTop.png',
 	      'slideBot':'#templates#/CSS/Backgrounds/titleBottom.png'}"
-	      footerTitle="ODAS 2017"
-	      footerDate="7-9 June 2017 - Aussois"
-	      convertImages="True"
-	      makePdf="False"
+	footerTitle="A great presentation"
+	footerDate="7-9 June 2018 - Someplace"
+	convertImages="True"
+	makePdf="False"
     />
 
+    <slide type="firstSlide"/>
+    
+    <slide type="titleSlide"
+	   moveX="right"
+	   presTitle="An python/impress.js based HTML presentation framework"
+	   author="Jouke Hijlkema"/>
+
+    <!-- Plan -->
+    <slide title="Plan" type="plan"/>
+
+    <!-- Dependencies -->
+    <slide title="Instalation" 
+	   inPlan="Instalation">
+	<box title="Dependencies">
+	    <bList style="font-size:50%">
+		<i>colorama (sudo -H pip3 install colorama)</i>
+	    </bList>
+	</box>
+    </slide>
+    <!-- slide -->
+    <slide title="The XML file : parameters"
+	   inPlan="XML: Parameters">
+	Have a look at the files in the Test directory to get an idea
+	<dList style="font-size:50%" >
+	    <dt>root</dt><dd>the base directory of your futur presentation. Zip this directory to take it with you</dd>
+	    <dt>templates</dt><dd>The root of your presntation tool installation.</dd>
+	    <dt>image/videoRoot</dt><dd> A shorcut for images and videos (use video.mp4 as a shortcut).</dd>
+	    <dt>slideWidth/Height</dt><dd> the size of you slides. Idealy this should be adapted to your beamer resolution.</dd>
+	    <dt>margin</dt><dd>The margin around slides. This is used when moving</dd>
+	    <dt>css</dt><dd> The css file. This allows to modify the apearence of EVERYTHING in you presentation.</dd>
+	    <dt>logos</dt><dd> A list of logos that can be placed with css (see Test.css).</dd>
+	    <dt>backgrounds</dt><dd> A list of backgrounds.</dd>
+	    <dt>footer*</dt><dd> Obvious footer stuff.</dd>
+	    <dt>convertImages</dt><dd> If true use convert (imagemagic) to convert and scale images.</dd>
+	    <dt>makePdf</dt><dd> Attempt to creat a pdf as well as the html sources.</dd>
+	    <dt>makePdf</dt><dd> Attempt to creat a pdf as well as the html sources.</dd>
+	</dList>
+    </slide>
+
+    <!-- how to make boxes -->
+    <slide title="how to make boxes"
+	   inPlan="Boxes">
+	<box>
+	    To make a box you use &lt;box&gt;text&lt;/box&gt;
+	</box>
+	<box style="width:100%;font-size:50%;margin:10px">
+	    <text>
+		you can change it apearence with the syle attribute
+		&lt;box style="width:100%;text-size:50%;margin:10px"&gt;\\
+		new lines in the text are done with \ \ (no space between them)
+	    </text>
+	    <bList>
+		<i>use &lt;bList&gt;&lt;i&gt;text&lt;\i&gt;&lt;\bList&gt;\\</i>
+	    </bList>
+	    <text>To make a bullet list (and &lt;text&gt; to add some more text)</text>
+	</box>
+    </slide>
+
     <!-- test slides for links -->
-    <slide title="test links">
-	<textBox  id="list1" class="top left transparent" style="font-size:60%;width:30%;height:30%">
-	    <bList>
-		<i>truc</i>
-		<i>machin</i>
-		<i>bidul</i>
-	    </bList>
-	</textBox>
-	<textBox id="list2" class="bottom right transparent" style="font-size:60%;width:30%;height:30%">
-	    <bList>
-		<i>1</i>
-		<i>2</i>
-		<i>3</i>
-		<i>4</i>
-		<i>5</i>
-	    </bList>
-	</textBox>
-	<textBox id="list3" class="bottom left transparent" style="font-size:50%;width:30%;height:15%">
-	    <bList>
-		<i>1</i>
-		<i>3</i>
-		<i>5</i>
-	    </bList>
-	</textBox>
+    <slide title="how to make arrows"
+	   inPlan="Arrows">
+	<box  id="list1" class="top left transparent" style="font-size:60%;width:30%">
+	    To make links between boxes you need to give them unique id's.\\
+	    This box has id=id1.
+	</box>
+	<box id="list2" class="bottom right transparent" style="font-size:50%;width:40%">
+	    this box has id2\\
+	    &lt;arrows&gt;\\
+	    &lt;arrows&gt; from="id1:e" to="id2:n"/&gt;\\
+	    &lt;/arrows&gt;\\
+	    We add n/e/s/w to the 'from' and 'to' labels to indicate anchor points
+	</box>
+	<box id="list3" class="bottom left transparent" style="font-size:40%;width:30%">
+	    this box has id3\\
+	    &lt;arrow from="id2:w" to="id3:e" style="stroke:green;stroke-width:30" /&gt;\\
+	    to change the arrows
+	</box>
 	<arrows>
-	    <arrow from="list1;e" to="list2;n" style="stroke:red"/>
-	    <arrow from="list2;w" to="list3;e" style="stroke:green"/>
-	    <arrow from="list3;n" to="list1;s" style="stroke:blue"/>
+	    <arrow from="list1;e" to="list2;n" />
+	    <arrow from="list2;w" to="list3;e" style="stroke:green;stroke-width:20"/>
+	    <arrow from="list3;n" to="list1;s" style="stroke:blue;stroke-width:5"/>
 	</arrows>
     </slide>
-    <slide title="test links">
-	<textBox  id="list21" class="top left transparent" style="font-size:60%;width:30%;height:30%">
-	    <bList>
-		<i>truc</i>
-		<i>machin</i>
-		<i>bidul</i>
-	    </bList>
-	</textBox>
-	<textBox id="list22" class="top right transparent" style="font-size:60%;width:30%;height:30%">
-	    <bList>
-		<i>1</i>
-		<i>2</i>
-		<i>3</i>
-		<i>4</i>
-		<i>5</i>
-	    </bList>
-	</textBox>
-	<textBox id="list23" class="bottom left transparent" style="font-size:50%;width:20%;height:15%">
-	    <bList>
-		<i>1</i>
-		<i>3</i>
-		<i>5</i>
-	    </bList>
-	</textBox>
-	<arrows>
-	    <arrow from="list21;e" to="list22;w" />
-	    <arrow from="list22;s" to="list23;e" style="stroke:green"/>
-	    <arrow from="list23;n" to="list21;s" style="stroke:blue"/>
-	</arrows>
+
+    <!-- images & videos -->
+    <slide title="Images and videos"
+	   inPlan="Images &amp; videos">
+	<figure src="title1.jpg"
+		     cap="this is an image with caption"
+		     class="top left"
+		     style="width:50%"/>
+	<figure src="title1.jpg"
+		     class="top right"
+		     style="width:50%"/>
+	<video src="big_buck_bunny.webm"
+	       class="bottom hcenter"
+	       style="width:50%;padding-left:25%"/>
     </slide>
+
+    <!-- Tables -->
+    <slide title="Tables"
+	   inPlan="Tables">
+	<table style="width:100%;font-size:35%">
+	    <row class="tableHead">
+		<col>first col</col>
+		<col>second col</col>
+	    </row>
+	    <row>
+		<col>this is a column</col>
+		<col>and another one</col>
+	    </row>
+	    <row>
+		<col>one more</col>
+		<col>last one</col>
+	    </row>
+	    <row>
+		<col>
+		    <box>
+			A box in a table
+		    </box>
+		</col>
+	    </row>
+	</table>
+	<box title="A table in a box" style="margin-top:1em">
+	    <table style="width:100%;font-size:35%">
+		<row class="tableHead">
+		    <col>first col</col>
+		    <col>second col</col>
+		</row>
+		<row>
+		    <col>this is a column</col>
+		    <col>and another one</col>
+		</row>
+		<row>
+		    <col>one more</col>
+		    <col>last one</col>
+		</row>
+	    </table>
+	</box>
+
+    </slide>
+
+
 </presentation>

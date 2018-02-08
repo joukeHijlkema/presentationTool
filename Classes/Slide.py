@@ -12,7 +12,7 @@
 from lxml import etree
 import re
 import os
-import uuid
+from Classes.Node import *
 
 class Slide:
     def __init__(self,s,Coords,Dirs,number,lastSlide):
@@ -63,22 +63,35 @@ class Slide:
         else:
             self.source.set('class','step slide')
 
-        if "class" in s.attrib:
-            self.source.set('class',"%s %s"%(self.source.get("class"),s.get("class")))
+        for a in s.attrib:
+            old = ""
+            if a in self.source.attrib:
+                old = self.source.attrib.get(a)
+            
+            self.source.set(a,("%s %s"%(s.get(a),old)).strip())
 
         if "id" in s.attrib:
             self.source.set('id',s.get('id'))
         else:
             self.source.set('id',"slide_%d"%number)
 
-        for i in s:
-            if type(i) != etree._Element:
-                print("skipping unknown stuff")
-                continue
-            e = self.chose(i)
-            if e!=None:
-                self.source.append(e)
+        for n in s.iterchildren():
+            self.source.append(self.walk(n))
 
+    ## --------------------------------------------------------------
+    ## Description : Walk the tree
+    ## NOTE : 
+    ## -
+    ## Author : jouke hylkema
+    ## date   : 05-32-2018 13:32:06
+    ## --------------------------------------------------------------
+    def walk (self,s):
+        print(s)
+        out = eval("%s(s,self)"%s.tag )
+        for n in s.iterchildren():
+            out.node.append(self.walk(n))
+        return out.node
+        
     ## --------------------------------------------------------------
     ## Description : Parse slide
     ## NOTE : 
@@ -104,37 +117,10 @@ class Slide:
     def chose (self,i) -> etree._Element:
 
         out=None
-        if i.tag=="textBox":
-            out = self.generic(i,'div')
-        elif i.tag=="bList":
-            out = self.generic(i,'ul')
-        elif i.tag=="i":
-            out = self.generic(i,'li')
-        elif i.tag=="video":
-            out = self.video(i)
-        elif i.tag=="video-overlay":
+        if i.tag=="video-overlay":
             out = self.videoOverlay(i)
-        elif i.tag=="figure":
-            out = self.figure(i)
         elif i.tag=="plan":
             out = self.plan(i)
-        elif i.tag == "table":
-            out=self.generic(i,'table')
-        elif i.tag=="row":
-            out=self.generic(i,'tr')
-        elif i.tag=="tableHead":
-            out=self.generic(i,'th')
-        elif i.tag=="cell":
-            out=self.generic(i,'td')
-        elif i.tag=="arrow":
-            out=self.arrow(i)
-        elif i.tag=="arrows":
-            out=self.generic(i,"svg")
-            out.set("width","100%")
-            out.set("height","100%")
-        else:
-            out=self.generic(i,i.tag)
-            print("!! used generic %s"%i.tag) 
 
         if out!=None:
             if "class" in i.attrib:
@@ -189,32 +175,6 @@ class Slide:
                 elif key == "height":
                     H *= 0.01*float(val)
         return [W,H]
-
-
-    ## --------------------------------------------------------------
-    ## Description :make a figure
-    ## NOTE :
-    ## -
-    ## Author : jouke hylkema
-    ## date   : 22-32-2017 15:32:45
-    ## --------------------------------------------------------------
-    def figure (self,s):
-        [W,H] = self.getDim(s)
-        if "cap" in s.attrib:
-            out = etree.Element('figure')
-            fc = etree.Element("figcaption")
-            fc.text=s.get("cap")
-            out.append(fc)
-        else:
-            out = etree.Element('div')
-
-        im = etree.Element("img")
-        im.set("src",self.Dirs.cpImage(s.get('src'),W,H))
-        im.set("width","100%")
-        
-        out.append(im)
-            
-        return out
     
     ## --------------------------------------------------------------
     ## Description :make a video overlay
@@ -235,61 +195,4 @@ class Slide:
         out.append(im)
         return out
         
-    ## --------------------------------------------------------------
-    ## Description :make a video box
-    ## NOTE :
-    ## -
-    ## Author : jouke hylkema
-    ## date   : 22-02-2017 14:02:49
-    ## --------------------------------------------------------------
-    def video (self,s) -> etree._Element:
-        out = etree.Element('div')
-        if os.path.isfile(s.get("src")):
-            v = etree.Element('video')
-            v.set("src",self.Dirs.cpVideo(s.get("src")))
-            v.set('controls','controls')
-            v.set('loop','loop')
-        else:
-            v = etree.Element("tag")
-            v.text=("Video %s not found"%s.get("src"))
-        out.append(v)
-        return out
 
-    ## --------------------------------------------------------------
-    ## Description : arrow
-    ## NOTE : 
-    ## -
-    ## Author : jouke hylkema
-    ## date   : 04-28-2018 14:28:24
-    ## --------------------------------------------------------------
-    def arrow (self,s):
-        out = etree.Element("path")
-        id = uuid.uuid4()
-        out.set("id","%s"%id)
-        if not "style" in s.attrib:
-            out.set("stroke","black")
-            out.set("fill","black")
-            out.set("stroke-width","10")
-        
-        link = "%s:%s:%s"%(id,s.get("from"),s.get("to"))
-        if self.source.get('data-links'):
-            link += ",%s"%self.source.get('data-links')
-        self.source.set('data-links',link)
-        
-        return out
-        
-    ## --------------------------------------------------------------
-    ## Description :parse text for special characters
-    ## NOTE :
-    ## -
-    ## Author : jouke hylkema
-    ## date   : 24-38-2017 14:38:25
-    ## --------------------------------------------------------------
-    def parse (self,txt):
-        subs = {
-            "#Rarrow#":u"\u2192",
-            "#RDarrow#":u"\u21D2"
-        }
-        for s in subs:
-            txt=txt.replace(s,subs[s])
-        return txt

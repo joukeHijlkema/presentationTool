@@ -76,6 +76,7 @@ function makeLinks(links,slide) {
     var O      = new Vector(slideBB.x,slideBB.y);
     for (let pair of links.split(",")) {
 	var elts   = pair.split(":");
+	console.log(elts[1].split(";")[0]);
 	var line = document.getElementById(elts[0])
 	var src = document.getElementById(elts[1].split(";")[0])
 	var srcBB  = src.getBoundingClientRect();

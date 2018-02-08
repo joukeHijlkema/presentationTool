@@ -255,3 +255,7 @@ table, th, td {
     vertical-align: sub;
     font-size: smaller;
 }
+
+.textBox .title {
+    background:blue;
+}

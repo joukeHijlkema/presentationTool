@@ -1,0 +1,92 @@
+<presentation>
+    <parameters
+	root="/tmp"
+	      templates="/home/hylkema/Projects/presentationTool"
+	      imageRoot="#templates#/Test/Images"
+	      videoRoot="#templates#/Test/Videos"
+	      slideWidth="1000"
+	      slideHeight="700"
+	      margin="500"
+	      css="ODAS.css"
+	      logos="{'oneraLogo':'#templates#/CSS/Logos/onera.svg'}"
+	      backgrounds="{
+	      'bg1':'#templates#/CSS/Backgrounds/s1.png',
+	      'bg2':'#templates#/CSS/Backgrounds/s2.png',
+	      'slideTop':'#templates#/CSS/Backgrounds/titleTop.png',
+	      'slideBot':'#templates#/CSS/Backgrounds/titleBottom.png'}"
+	      footerTitle="ODAS 2017"
+	      footerDate="7-9 June 2017 - Aussois"
+	      convertImages="True"
+	      makePdf="False"
+    />
+
+    <!-- Dependencies -->
+    <slide title="Instalation">
+	<textBox title="Dependencies">
+	    <bList>
+		<i>colorama (sudo -H pip3 install colorama)</i>
+	    </bList>
+	</textBox>
+    </slide>
+    <!-- test slides for links -->
+    <slide title="test links">
+	<textBox  id="list1" class="top left transparent" style="font-size:60%;width:30%;height:30%">
+	    <bList>
+		<i>truc</i>
+		<i>machin</i>
+		<i>bidul</i>
+	    </bList>
+	</textBox>
+	<textBox id="list2" class="bottom right transparent" style="font-size:60%;width:30%;height:30%">
+	    <bList>
+		<i>1</i>
+		<i>2</i>
+		<i>3</i>
+		<i>4</i>
+		<i>5</i>
+	    </bList>
+	</textBox>
+	<textBox id="list3" class="bottom left transparent" style="font-size:50%;width:30%;height:15%">
+	    <bList>
+		<i>1</i>
+		<i>3</i>
+		<i>5</i>
+	    </bList>
+	</textBox>
+	<arrows>
+	    <arrow from="list1;e" to="list2;n" style="stroke:red"/>
+	    <arrow from="list2;w" to="list3;e" style="stroke:green"/>
+	    <arrow from="list3;n" to="list1;s" style="stroke:blue"/>
+	</arrows>
+    </slide>
+    <slide title="test links">
+	<textBox  id="list21" class="top left transparent" style="font-size:60%;width:30%;height:30%">
+	    <bList>
+		<i>truc</i>
+		<i>machin</i>
+		<i>bidul</i>
+	    </bList>
+	</textBox>
+	<textBox id="list22" class="top right transparent" style="font-size:60%;width:30%;height:30%">
+	    <bList>
+		<i>1</i>
+		<i>2</i>
+		<i>3</i>
+		<i>4</i>
+		<i>5</i>
+	    </bList>
+	</textBox>
+	<textBox id="list23" class="bottom left transparent" style="font-size:50%;width:20%;height:15%">
+	    <bList>
+		<i>1</i>
+		<i>3</i>
+		<i>5</i>
+	    </bList>
+	</textBox>
+	<arrows>
+	    <arrow from="list21;e" to="list22;w" />
+	    <arrow from="list22;s" to="list23;e" style="stroke:green"/>
+	    <arrow from="list23;n" to="list21;s" style="stroke:blue"/>
+	</arrows>
+    </slide>
+</presentation>
