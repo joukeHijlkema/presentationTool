@@ -12,7 +12,7 @@
 from lxml import etree
 import re
 import os
-from Classes.Node import *
+from Classes.Node import Node
 
 class Slide:
     def __init__(self,s,Coords,Dirs,number,lastSlide):
@@ -87,7 +87,7 @@ class Slide:
     ## --------------------------------------------------------------
     def walk (self,s):
         print(s)
-        out = eval("%s(s,self)"%s.tag )
+        out = Node(s,self)
         for n in s.iterchildren():
             out.node.append(self.walk(n))
         return out.node
