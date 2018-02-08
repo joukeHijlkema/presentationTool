@@ -108,53 +108,6 @@ class Slide:
             Slide.set(i,new)
 
     ## --------------------------------------------------------------
-    ## Description :chose what item this is
-    ## NOTE :
-    ## -
-    ## Author : jouke hylkema
-    ## date   : 20-26-2017 15:26:56
-    ## --------------------------------------------------------------
-    def chose (self,i):
-
-        out=None
-        if i.tag=="video-overlay":
-            out = self.videoOverlay(i)
-        elif i.tag=="plan":
-            out = self.plan(i)
-
-        if out!=None:
-            if "class" in i.attrib:
-                out.set("class","%s %s"%(i.tag,i.get("class")))
-            else:
-                out.set("class","%s"%i.tag)
-            if "style" in i.attrib:
-                out.set("style",i.get("style"))
-            if "id" in i.attrib:
-                out.set("id",i.get("id"))
-            if "width" in i.attrib:
-                out.set("width",i.get("width"))
-
-        return out
-
-    ## --------------------------------------------------------------
-    ## Description :table row
-    ## NOTE :
-    ## -
-    ## Author : jouke hylkema
-    ## date   : 26-14-2017 16:14:47
-    ## --------------------------------------------------------------
-    def generic (self,s,tag):
-        out          = etree.Element(tag)
-        lines        = s.text.split("\\\\")
-        out.text     = self.parse(lines[0])
-        for i in range(1,len(lines)):
-            br       = etree.SubElement(out, "br")
-            br.tail  = self.parse(lines[i])
-        for i in s:
-            out.append(self.chose(i))
-        return out
-
-    ## --------------------------------------------------------------
     ## Description :get dimensions
     ## NOTE :
     ## -
@@ -175,24 +128,5 @@ class Slide:
                 elif key == "height":
                     H *= 0.01*float(val)
         return [W,H]
-    
-    ## --------------------------------------------------------------
-    ## Description :make a video overlay
-    ## NOTE :
-    ## -
-    ## Author : jouke hylkema
-    ## date   : 22-17-2017 15:17:00
-    ## --------------------------------------------------------------
-    def videoOverlay (self,s):
-        out = etree.Element('div')
-        im = etree.Element('img')
-        [W,H] = self.getDim(s)
-        im.set('src',self.Dirs.cpImage(s.get('src'),W,H))
-        if "width" in s.attrib:
-            im.set("width",s.get("width"))
-        if "height" in s.attrib:
-            im.set("height",s.get("width"))
-        out.append(im)
-        return out
         
 

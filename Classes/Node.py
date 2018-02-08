@@ -15,7 +15,7 @@ import os
 class Node():
     trans = {
         "box":"div",
-        "bLis":"ul",
+        "bList":"ul",
         "dList":"dl",
         "i":"li",
         "dt":"dt",
@@ -27,13 +27,14 @@ class Node():
         "video":"div",
         "table":"table",
         "row":"tr",
-        "col":"th"}
+        "col":"th",
+        "videoOverlay":"div"
+    }
            
     def __init__(self,s,top):
         "add a text box"
-        tag = s.tag
         self.Coords = top.Coords
-        self.node = etree.Element(tag)
+        self.node = etree.Element(self.trans[s.tag])
         self.node.set("class",s.tag)
         for a in s.attrib:
             old = ""
@@ -49,17 +50,17 @@ class Node():
                 br         = etree.SubElement(self.node, "br")
                 br.tail    = self.parse(lines[i])
 
-        if tag=="box":
+        if s.tag=="box":
             if "title" in s.attrib:
                 self.title = etree.Element("div")
                 self.title.set("class","boxTitle")
                 self.title.set("style","width:100%")
                 self.title.text = s.get("title")
                 self.node.append(self.title)
-        elif tag=="arrows":
+        elif s.tag=="arrows":
            self.node.set("width","100%")
            self.node.set("height","100%")
-        elif tag=="arrow":
+        elif s.tag=="arrow":
             id = uuid.uuid4()
             self.node.set("id","%s"%id)
             if not "style" in s.attrib:
@@ -70,7 +71,7 @@ class Node():
             if top.source.get('data-links'):
                 link += ",%s"%top.source.get('data-links')
             top.source.set('data-links',link)
-        elif tag=="figure":
+        elif s.tag=="figure":
             [W,H] = top.getDim(s)
             if "cap" in s.attrib:
                fc = etree.Element("figcaption")
@@ -80,16 +81,24 @@ class Node():
             im.set("src",top.Dirs.cpImage(s.get('src'),W,H))
             im.set("width","100%")
             self.node.append(im)
-        elif tag=="video":
+        elif s.tag=="video":
             newSrc = top.Dirs.cpVideo(s.get("src"))
             v = etree.Element('video')
             v.set("src",newSrc)
             v.set('controls','controls')
             v.set('loop','loop')
             self.node.append(v)
-
-
-           
+        elif s.tag=="videoOverlay":
+            im = etree.Element('img')
+            [W,H] = self.getDim(s)
+            im.set('src',self.Dirs.cpImage(s.get('src'),W,H))
+            if "width" in s.attrib:
+                im.set("width",s.get("width"))
+                if "height" in s.attrib:
+                    im.set("height",s.get("width"))
+            self.node.append(im)
+            
+            
 
     ## --------------------------------------------------------------
     ## Description :parse text for special characters
