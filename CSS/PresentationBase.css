@@ -1,0 +1,269 @@
+.slide {
+    display: block;
+}
+div {
+    display: block;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    min-height: 740px;
+    background: radial-gradient( rgb(21,105,189), rgb(117,184,255));
+}
+
+/* ######################## FOOTERS ################################ */
+
+#footer {
+    position: absolute;
+    display: block;
+    bottom:0;
+    left:0;
+    width:100%;
+    height:50px;
+    line-height: 40px;
+    background:url(../IMAGES/slideBot.png) no-repeat;
+    background-size: 100%;
+    padding-left:60;
+}
+#footer .footerTitle {
+    display: inline;
+    font-size: 1.2em;
+    color: #FFFFFF;
+}
+#footer .footerDate {
+    display: inline;
+    padding-left: 1em;
+    font-size: 1.1em;
+    color: #E3E4EC;
+}
+#slideNumber{
+    position: absolute;
+    display: block;
+    bottom:0;
+    line-height:40px;
+    height:50px;
+    left:10;
+    font-size: 1.4em;
+    color: #FFFFFF;    
+}
+
+/* ########################## LOGOS ######################################## */
+
+#logo {
+    position: absolute;
+    display: block;
+    bottom:1%;
+    right:1%;
+}
+#oneraLogo {
+    position: absolute;
+    display: block;
+    bottom:0%;
+    right:1%;
+}
+
+/* ########################## FIRST SLIDES ######################################## */
+
+.first_slide {
+    background:url(../IMAGES/bg1.png) center;
+    background-size: 100% 100%;
+}
+
+.title {
+    background:url(../IMAGES/bg2.png) center;
+    background-size: 100% 100%;
+}
+
+.title h1 {
+    position: absolute;
+    top: 30%;
+    width: 100%;
+    margin: auto;
+    text-align: center;
+    color: #CBCBD2;
+    font-size: 1.3em;
+    line-height:1.1em;
+    vertical-align:middle;
+}
+
+.title h2 {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    margin: auto;
+    text-align: center;
+    font-size: 0.8em;
+    vertical-align:middle;
+    color: #CBCBD2;
+}
+
+.title h3 {
+    position: absolute;
+    top: 65%;
+    width: 100%;
+    margin: auto;
+    text-align: center;
+    font-size: 0.6em;
+    vertical-align:middle;
+    color: #CBCBD2;
+}
+
+/* ########################## PLAN ######################################## */
+
+.plan {
+    background:url(../IMAGES/bg3.png) center no-repeat;
+    background-size:100%;
+    margin:5px;
+}
+
+.plan ul {
+    list-style-type:dot;
+    padding-left:1em;
+    background:rgba(206,206,206,0.4);
+}
+
+.plan ul ul {
+    padding-left:0;
+}
+
+/* ########################## SLIDES ######################################## */
+
+#slideTitle {
+    position: absolute;
+    display: block;
+    top:0;
+    left:0;
+    font-size:2em;
+    width:100%;
+    height:70px;
+    line-height: 70px;
+    text-align:left;
+    background:url(../IMAGES/slideTop.png) no-repeat;
+    background-size: 100%;
+    color:white;
+    padding-left:20;
+}
+#slideSubTitle {
+    position: absolute;
+    display: block;
+    top:O;
+    right:10;
+    font-size:1.5em;
+    width:40%;
+    text-align:right;
+    height:70px;
+    line-height: 70px;
+}
+
+/* ########################## FIGURES ######################################## */
+
+figure {
+    display:table;
+    margin: auto;
+    padding: 0;
+}
+figcaption {
+    display: table-caption;
+    caption-side: top;
+    text-align:center;
+    font-size:0.4em;
+    color: #E5E5F1;
+    background: #444797;
+}
+figcaption fmath * {
+    font-family: Arial, sans-serif;
+    color: #E5E5F1;
+}
+
+/* ########################## TABLES ######################################## */
+
+table, th, td {
+    border: 1px solid black;
+    text-align:left;
+    padding-left:50px;
+    padding-right:10px;
+}
+
+
+/* ########################## BOXES ######################################## */
+
+.textBox {
+    background: #0000FC;
+    color:white;
+    padding:10px;
+    border-radius: 25px;
+    padding-left:30px;
+    padding-right:30px;
+}
+
+/* ########################## LISTS ######################################## */
+
+div .bullet.future {
+    opacity:1.0;
+}
+div .bullet.past {
+    opacity:0.1;
+}
+/* list indentation */
+/* Main Level */
+ul{
+    margin-left:0px;
+    list-style-type:disc;
+}
+
+/* Second Level */
+ul ul{
+    margin-left:1em;
+    font-size:80%;
+    list-style-type:square;
+}
+
+/* Third Level */
+ul ul ul{
+    margin-left:2em;
+    font-size:60%;
+}
+
+li {
+    list-style-position: outside;
+    margin-left: 1em;
+}
+
+
+/* ########################## FONT SIZES ######################################## */
+
+.smallText {
+    font-size:50%;
+}
+
+.mediumText {
+    font-size:80%;
+}
+
+.bigText {
+    font-size:150%;
+}
+
+
+/* ########################## DIVERS ######################################## */
+
+.done {
+    opacity:0.2;
+}
+
+#annexe1.future {
+    opacity:0;
+}
+
+.transparent {
+    opacity:0.9
+}
+
+.important {
+    background:#80002C;
+    color:#F0C4D3
+}
+.sub { 
+    vertical-align: sub;
+    font-size: smaller;
+}
