@@ -30,7 +30,7 @@ from colorama import Fore, Back, Style
 print(Fore.WHITE+Back.BLUE+"!!!! Starts parsing !!!!"+Style.RESET_ALL)
 
 # read the script
-parser = etree.XMLParser(remove_comments=True)
+parser   = etree.XMLParser(remove_comments=True)
 script   = objectify.parse(sys.argv[1],parser=parser).getroot()
 progBase = os.path.dirname(os.path.realpath(sys.argv[0]))
 params   = script.find("./parameters")
@@ -40,7 +40,7 @@ myDirStruct = dirStructure.dirStructure(params,myCoords,progBase)
 
 #construct the slides
 Slides    = []
-counter   = 0
+counter   = -1
 if "lastSlide" in params.attrib:
     lastSlide = params.get("lastSlide")
 else:
@@ -112,8 +112,8 @@ if "makePdf" in params.attrib and params.get("makePdf") == "True":
     options = {
         'encoding': "UTF-8",
         'viewport-size':'%sx%s'%(myCoords.W,myCoords.H),
-        'page-height':'%d'%(math.floor(0.6*myCoords.H)),
-        'page-width':'%d'%(math.floor(0.6*myCoords.W)),
+        'page-height':'%d'%(math.floor(0.5*myCoords.H)),
+        'page-width':'%d'%(math.floor(0.5*myCoords.W)),
         'javascript-delay':1000,
         'disable-smart-shrinking':None
     }
@@ -121,7 +121,7 @@ if "makePdf" in params.attrib and params.get("makePdf") == "True":
     files=[]
     counter=0
     for s in Slides:
-        pdf = Template("Templates/pdf.html",params,myDirStruct)
+        pdf = Template("%s/Templates/pdf.html"%progBase,params,myDirStruct)
         pdf.append(s)
         fn = "%s/pdf_%d.html"%(myDirStruct.root,counter)
         pdf.write(fn)
@@ -133,6 +133,6 @@ if "makePdf" in params.attrib and params.get("makePdf") == "True":
 
     counter=0
     for s in Slides:
-        myDirStruct.rm("%s/pdf_%d.html"%(myDirStruct.root,counter))
+        # myDirStruct.rm("%s/pdf_%d.html"%(myDirStruct.root,counter))
         counter+=1
     

@@ -19,7 +19,7 @@ class Template:
         body     = self.src.find("./body")
         footer   = self.src.find("./body/div[@id='footer']")
         s        = etree.Element('style')
-        s.text   = ".slide {width:%s;height:%s}"%(W,H) 
+        s.text   = ".slide {width:%spx;height:%spx}"%(W,H) 
 
         head.append(s)
 

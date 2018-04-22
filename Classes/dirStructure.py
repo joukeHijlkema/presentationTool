@@ -37,7 +37,7 @@ class dirStructure:
         # copy the css
         shutil.copyfile("%s/CSS/Global.css"%progBase,"%s/CSS/Global.css"%self.root)
         shutil.copyfile("%s/CSS/Init.css"%progBase,"%s/CSS/Init.css"%self.root)
-        shutil.copyfile("%s/CSS/Onera.css"%progBase,"%s/CSS/Presentation.css"%self.root)
+        shutil.copyfile("%s/CSS/PresentationBase.css"%progBase,"%s/CSS/PresentationBase.css"%self.root)
         shutil.copyfile("%s/CSS/Positioning.css"%progBase,"%s/CSS/Positioning.css"%self.root)
         shutil.copyfile("%s/CSS/Pdf.css"%progBase,"%s/CSS/Pdf.css"%self.root)
         shutil.rmtree("%s/CSS/CONTENT"%self.root,True)
@@ -46,7 +46,7 @@ class dirStructure:
         self.convertImages = Params.get("convertImages")=="True" if "convertImages" in Params.attrib else False
         
         if "css" in Params.attrib:
-            shutil.copy(Params.get("css"),"%s/CSS/Presentation.css"%self.root)
+            shutil.copy(Params.get("css"),"%s/CSS/PresentationExtra.css"%self.root)
         if "backgrounds" in Params.attrib:
             Items = eval(Params.get("backgrounds"))
             for i in Items:
@@ -84,7 +84,7 @@ class dirStructure:
     ## date   : 29-02-2017 19:02:55
     ## --------------------------------------------------------------
     def rm (self,path):
-        os.system("rm %s"%path)
+        os.system("rm '%s'"%path)
 
     ## --------------------------------------------------------------
     ## Description :copy a video
